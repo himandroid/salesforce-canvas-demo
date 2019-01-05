@@ -1,16 +1,16 @@
 var express = require('express'),
-    bodyParser = require('body-parser'),
-    request = require('request'),
-    qrcode = require('qrcode-npm'),
-    decode = require('salesforce-signed-request'),
+   // bodyParser = require('body-parser'),
+   // request = require('request'),
+  //  qrcode = require('qrcode-npm'),
+//    decode = require('salesforce-signed-request'),
 
     consumerSecret = process.env.CONSUMER_SECRET,
 
     app = express();
 
-app.set('view engine', 'ejs');
-app.use(bodyParser()); // pull information from html in POST
-app.use(express.static(__dirname + '/public'));
+//app.set('view engine', 'ejs');
+//app.use(bodyParser()); // pull information from html in POST
+//app.use(express.static(__dirname + '/public'));
 
 app.post('/signedrequest', function(req, res) {
 
@@ -39,7 +39,7 @@ app.post('/signedrequest', function(req, res) {
         res.render('index', {context: context, imgTag: imgTag});
     }); */
 
-	var static jsonres = {
+	var jsonres = {
   "region": "US",
   "serialNumber": "1234,456"
 };
