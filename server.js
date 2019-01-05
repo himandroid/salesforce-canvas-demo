@@ -40,12 +40,11 @@ app.post('/signedrequest', function(req, res) {
         res.render('index', {context: context, imgTag: imgTag});
     }); */
 
-	var jsonres ='Testing Canvas';
+	var jsonres ={"region":"US", "serialNumber":"1234, 4567"};
 	res.json(jsonres);
 });
 
-Sfdc.canvas.controller.publish({name : 'dsa',
-                                payload : {"region": "US","serialNumber": "1234,456"}});
+
 app.set('port', process.env.PORT || 5000); 
 
 app.listen(app.get('port'), function () {
