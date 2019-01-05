@@ -39,14 +39,13 @@ app.post('/signedrequest', function(req, res) {
         res.render('index', {context: context, imgTag: imgTag});
     }); */
 
-	var jsonres = {
-  "region": "US",
-  "serialNumber": "1234,456"
-};
+	var jsonres ='Testing Canvas';
 	res.json(jsonres);
 });
 
-app.set('port', process.env.PORT || 5000);
+Sfdc.canvas.controller.publish({name : 'dsa',
+                                payload : {"region": "US","serialNumber": "1234,456"}});
+app.set('port', process.env.PORT || 5000); 
 
 app.listen(app.get('port'), function () {
     console.log('Express server listening on port ' + app.get('port'));
