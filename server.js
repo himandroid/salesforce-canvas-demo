@@ -15,7 +15,7 @@ app.use(express.static(__dirname + '/public'));
 app.post('/signedrequest', function(req, res) {
 
     // You could save this information in the user session if needed
-    var signedRequest = decode(req.body.signed_request, consumerSecret),
+    /* var signedRequest = decode(req.body.signed_request, consumerSecret),
         context = signedRequest.context,
         oauthToken = signedRequest.client.oauthToken,
         instanceUrl = signedRequest.client.instanceUrl,
@@ -37,8 +37,13 @@ app.post('/signedrequest', function(req, res) {
         qr.make();
         var imgTag = qr.createImgTag(4);
         res.render('index', {context: context, imgTag: imgTag});
-    });
+    }); */
 
+	var static jsonres = {
+  "region": "US",
+  "serialNumber": "1234,456"
+};
+	res.json(jsonres);
 });
 
 app.set('port', process.env.PORT || 5000);
