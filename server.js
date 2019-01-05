@@ -3,7 +3,8 @@ var express = require('express'),
    // request = require('request'),
   //  qrcode = require('qrcode-npm'),
 //    decode = require('salesforce-signed-request'),
-
+var canvasall = require("./canvas-all.js");
+var controller = require("./controller.js");
     consumerSecret = process.env.CONSUMER_SECRET,
 
     app = express();
