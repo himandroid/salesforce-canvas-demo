@@ -3,8 +3,7 @@ var express = require('express'),
    // request = require('request'),
   //  qrcode = require('qrcode-npm'),
 //    decode = require('salesforce-signed-request'),
-var canvasall = require("./canvas-all.js");
-var controller = require("./controller.js");
+
     consumerSecret = process.env.CONSUMER_SECRET,
 
     app = express();
@@ -20,16 +19,13 @@ app.post('/signedrequest', function(req, res) {
         context = signedRequest.context,
         oauthToken = signedRequest.client.oauthToken,
         instanceUrl = signedRequest.client.instanceUrl,
-
         query = "SELECT Id, FirstName, LastName, Phone, Email FROM Contact WHERE Id = '" + context.environment.record.Id + "'",
-
         contactRequest = {
             url: instanceUrl + '/services/data/v29.0/query?q=' + query,
             headers: {
                 'Authorization': 'OAuth ' + oauthToken
             }
         };
-
     request(contactRequest, function(err, response, body) {
         var qr = qrcode.qrcode(4, 'L'),
             contact = JSON.parse(body).records[0],
@@ -40,12 +36,14 @@ app.post('/signedrequest', function(req, res) {
         res.render('index', {context: context, imgTag: imgTag});
     }); */
 
-	var jsonres ={"region":"US", "serialNumber":"1234, 4567"};
+	var jsonres = {
+  "region": "US",
+  "serialNumber": "1234,456"
+};
 	res.json(jsonres);
 });
 
-
-app.set('port', process.env.PORT || 5000); 
+app.set('port', process.env.PORT || 5000);
 
 app.listen(app.get('port'), function () {
     console.log('Express server listening on port ' + app.get('port'));
